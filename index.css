@@ -1,0 +1,736 @@
+:root{
+    --blue: #007BFF;
+    --white: #FFFFFF;
+    --green: #3BB273;
+    --black: #000000;
+    --white2: #B0B0B0;
+}
+
+body{
+    background-color: var(--black);
+    margin: 0; /* Asegura que no haya margen en el body */
+}
+
+/* Contenedor principal */
+.container {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "products products"
+        "banner banner"
+        "carousel carousel"
+        "gallery gallery"
+        "footer footer";
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 50px; /* Elimina el espacio entre las secciones */
+    margin: 0; /* Elimina el margen del contenedor */
+    z-index: 1;
+    position: absolute;
+}
+
+/* Estilos del Header */
+.header {
+    height: 100px; /* Reduce la altura del header para hacerlo más compacto */
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px; /* Ajusta el padding para más espacio */
+    background-color: var(--white2);
+    font-size: 2.5rem; /* Tamaño de fuente más adecuado */
+    color: var(--blue);
+    position: sticky;
+    top: 0; 
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añadir sombra sutil */
+}
+
+/* Estilo del menú */
+.menu p {
+    font-size: 1.5rem; /* Ajusta el tamaño de fuente */
+    color: var(--blue);
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transición para un cambio de color suave */
+}
+
+.menu p:hover {
+    color: var(--green); /* Cambia el color al pasar el mouse */
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    width: 120px; /* Ajusta el tamaño del logo */
+    height: auto;
+    transition: transform 0.3s ease; /* Añade una transición al pasar el cursor */
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* Efecto de aumento */
+}
+
+/* Sección de login */
+.login {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.login i {
+    font-size: 2rem; /* Aumenta el tamaño de los iconos */
+    color: var(--blue);
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transición de color al pasar el cursor */
+}
+
+.login i:hover {
+    color: var(--green); /* Color verde al pasar el cursor */
+}
+
+/* Diseño y espaciado de los iconos */
+.login i#user {
+    transition: transform 0.3s ease;
+}
+
+.login i#user:hover {
+    transform: scale(1.2); /* Efecto de escala al pasar el cursor */
+}
+
+.login i#car {
+    transition: transform 0.3s ease;
+}
+
+.login i#car:hover {
+    transform: scale(1.2); /* Efecto de escala al pasar el cursor */
+}
+
+/* Estilos para la sección de productos */
+.products {
+    grid-area: products;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 50px; /* Mayor espacio entre los productos */
+    margin: 30px auto; /* Centra la sección y le agrega un margen */
+    padding: 0 40px; /* Padding para no dejar los productos pegados al borde */
+    justify-items: center; /* Alinea los productos al centro */
+}
+
+/* Estilo individual para cada producto */
+.product-item {
+    width: 100%;
+    max-width: 400px; /* Limita el ancho máximo */
+    height: 450px; /* Ajusta la altura */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white); /* Fondo blanco */
+    border-radius: 20px; /* Bordes más redondeados */
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover para los productos */
+.product-item:hover {
+    transform: translateY(-15px); /* Desplazamiento hacia arriba al pasar el mouse */
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.2); /* Sombra más profunda */
+}
+
+/* Estilo para la imagen del producto */
+.product-item img {
+    width: 100%;
+    height: 70%; /* Ajusta la imagen para que no ocupe todo el espacio */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    border-radius: 15px; /* Bordes redondeados */
+    margin-bottom: 15px; /* Espacio entre la imagen y el texto */
+}
+
+/* Estilo para el nombre del producto */
+.product-item p {
+    font-size: 1.3rem;
+    color: var(--black); /* Color negro para el nombre */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+/* Estilo para el precio del producto */
+.product-item .price {
+    font-size: 1.6rem;
+    color: var(--green); /* Color verde para el precio */
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Estilo para el botón de agregar al carrito */
+.product-item .add-to-cart {
+    background-color: var(--green);
+    color: var(--white);
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.product-item .add-to-cart:hover {
+    background-color: var(--blue); /* Cambia a azul al pasar el cursor */
+    transform: scale(1.05); /* Efecto de agrandar ligeramente */
+}
+
+
+/* Banner */
+.banner {
+    background-image: url("./imgs/banner.png");
+    grid-area: banner;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover; /* Asegura que la imagen cubra todo el área */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat;
+}
+
+/* Estilos para el carrusel */
+.carousel {
+    grid-area: carousel;
+    display: flex;
+    gap: 1vw; /* Espacio entre los items */
+    overflow-x: scroll; /* Desplazamiento horizontal */
+    overflow-y: hidden; /* Sin desplazamiento vertical */
+    margin: 10px;
+    height: 500px;
+}
+
+/* Estilos de los elementos del carrusel */
+.carousel-item {
+    background-color: #8fb9a8;
+    position: relative;
+    flex-shrink: 0; /* Evita que los elementos se encojan */
+    width: 30vw; /* Ancho de cada imagen */
+    min-width: 20%; /* Ancho mínimo de la imagen */
+    min-height: 20%;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out; /* Efecto suave para transformaciones */
+}
+
+/* Efecto hover para los items del carrusel */
+.carousel-item:hover {
+    transform: scale(1.05); /* Escala ligeramente el item al hacer hover */
+}
+
+/* Estilos para las imágenes dentro del carrusel */
+.carousel-item img {
+    width: 100%; /* La imagen ocupa todo el contenedor */
+    height: 100%;
+    object-fit: cover; /* Ajuste para que la imagen no se distorsione */
+    transition: opacity 0.3s ease; /* Transición para el cambio de opacidad */
+}
+
+/* Efecto hover en las imágenes dentro del carrusel */
+.carousel-item:hover img {
+    opacity: 0.8; /* Hace que la imagen se vuelva un poco transparente al hacer hover */
+}
+
+/* Galería */
+.gallery {
+    grid-area: gallery;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.gallery-item {
+    background-color: #d3d3d3;
+    height: 120px;
+}
+
+/* Estilos generales del footer */
+.footer {
+    grid-area: footer;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
+    gap: 40px;
+    padding: 40px 20px; /* Mayor padding */
+    background-color: #212121; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    font-size: 1.2rem;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2); /* Sombra en la parte superior */
+}
+
+/* Estilo de las secciones dentro del footer (help, us, legal) */
+.footer .help,
+.footer .us,
+.footer .legal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #F2C744; /* Color de los encabezados (lo que te gustaba) */
+}
+
+/* Estilo de los enlaces dentro de cada sección */
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+/* Hover en los enlaces */
+.footer a:hover {
+    color: #F2C744; /* Cambia a color dorado */
+}
+
+/* Estilos de los iconos de pago */
+.payment {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.payment .card,
+.payment .masterCard,
+.payment .Paypal {
+    font-size: 3rem;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.payment .card:hover,
+.payment .masterCard:hover,
+.payment .Paypal:hover {
+    color: #F2C744; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilos de los iconos de redes sociales */
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.social-media span {
+    font-size: 2.5rem;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+/* Hover en las redes sociales */
+.social-media span:hover {
+    color: #F2C744; /* Cambio de color al pasar el mouse */
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .footer {
+        grid-template-columns: 1fr 1fr; /* Cambia a dos columnas en pantallas pequeñas */
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .footer h3 {
+        font-size: 1.3rem; /* Tamaño de fuente más pequeño para los títulos */
+    }
+
+    .footer a {
+        font-size: 1rem; /* Tamaño de fuente más pequeño para los enlaces */
+    }
+
+    .payment .card,
+    .payment .masterCard,
+    .payment .Paypal {
+        font-size: 2.5rem; /* Tamaño de los iconos de pago más pequeño */
+    }
+
+    .social-media span {
+        font-size: 2rem; /* Tamaño de los iconos sociales más pequeño */
+    }
+}
+
+.header, .footer {
+    z-index: 1001; /* Debe ser mayor que el contenido pero menor que la ventana */
+}
+
+/* Ventana de categoría */
+#categoriesContainer{
+    position: fixed; /* Fija al viewport */
+    top: 100px; /* Debajo del header */
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    background-color: var(--black); /* Fondo sólido */
+    z-index: 0; /* Encima del overlay */
+    color: var(--white);
+    padding: 20px;
+    overflow-y: auto; /* Habilita scroll si el contenido excede */
+    height: 80vh;
+    opacity: 0;
+}
+
+.itemsPosition {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.item p {
+    margin: 5px 0;
+    color: var(--black);
+    font-weight: bold;
+}
+
+.item:hover {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.item:hover img {
+    opacity: 0.8;
+}
+
+.singleProduct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 800px;
+    margin: 50px auto;
+    position: relative;
+}
+
+.backButton {
+    background: none;
+    border: none;
+    color: var(--blue);
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+.imgContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 20px;
+}
+
+.productImage {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+}
+
+.navButton:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.prevButton {
+    left: -15px;
+}
+
+.nextButton {
+    right: -15px;
+}
+
+.details {
+    text-align: center;
+    width: 100%;
+}
+
+.details h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: var(--black);
+}
+
+.details .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--green);
+}
+
+.details .description {
+    font-size: 1rem;
+    color: var(--black);
+    margin: 15px 0;
+}
+
+.addToCartButton {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.addToCartButton:hover {
+    background: var(--blue);
+    transform: scale(1.05);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .singleProduct {
+        max-width: 90%;
+    }
+
+    .navButton {
+        width: 25px;
+        height: 25px;
+        font-size: 1rem;
+    }
+
+    .details h2 {
+        font-size: 1.5rem;
+    }
+}
+/* Contenedor del producto dentro del carrito */
+.product-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    width: 90%;
+    max-width: 600px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    gap: 20px; /* Espacio entre imagen y detalles del producto */
+}
+
+/* Efecto de hover para el contenedor de productos */
+.product-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagen del producto */
+.product-item-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Información del producto (título, precio y cantidad) */
+.product-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+/* Título, precio y cantidad */
+.product-item-title, .product-item-price, .product-item-count {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Botones y cantidad del producto */
+.product-item-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+    width: 120px; /* Ancho fijo para los botones y contador */
+}
+
+/* Contador de cantidad */
+.product-item-count {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+    text-align: center;
+    width: 30px; /* Definir un ancho fijo */
+    height: 30px; /* Definir una altura fija */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+}
+
+/* Estilos de los botones (aumentar y disminuir) */
+.product-item-button {
+    padding: 8px 12px;
+    font-size: 18px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 40px; /* Ancho fijo para botones */
+    height: 40px; /* Alto fijo para botones */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efecto hover para los botones */
+.product-item-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+/* Mostrar mensaje cuando el carrito está vacío */
+.empty-message {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Total Price */
+.total-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px; /* Mayor espacio entre el total y los productos */
+    color: #333;
+}
+
+/* Botón de Checkout */
+.checkout-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+    background-color: #218838;
+}
+
+/* Estilos del formulario de compra */
+.purchase-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.purchase-form h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.purchase-form-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.purchase-form-submit {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.purchase-form-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Botón de cancelar formulario */
+.cancel-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ccc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+    background-color: #999;
+}
+
